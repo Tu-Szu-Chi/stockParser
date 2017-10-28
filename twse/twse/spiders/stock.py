@@ -10,12 +10,9 @@ class StockSpider(scrapy.Spider):
     )
 
     def parse(self, response):
-        print('----------')
         items = []
         for tr in response.css('table > tbody > tr'):
-            print('!!!tr!!!')
             yield self.parse_stock(tr)
-        print('----------')
 
     def parse_stock(self, trSelector):
         item = TwseItem()
